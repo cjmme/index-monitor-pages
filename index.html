@@ -11,27 +11,30 @@ nav button{background:#161b22;color:#8b949e;border:1px solid #30363d;
     padding:6px 18px;border-radius:6px;cursor:pointer;font-size:14px;font-family:inherit}
 nav button:hover{color:#c9d1d9;border-color:#8b949e}
 nav button.active{background:#1f6feb;color:#fff;border-color:#1f6feb}
-.frame{display:none;width:100%;height:calc(100vh - 49px);border:0}
+.frame{display:none;width:100%;height:calc(100vh - 49px);border:0;background:#fff}
 .frame.show{display:block}
 </style></head><body>
 <nav>
   <span class="logo">📊 指数监控台</span>
-  <button id="tab-a" onclick="show('a')">六值指数</button>
-  <button id="tab-b" onclick="show('b')">历史最大回撤</button>
+  <button id="tab-six-worth" onclick="show('six-worth')">六值指数</button>
+  <button id="tab-drawdown" onclick="show('drawdown')">历史最大回撤</button>
+  <button id="tab-trades" onclick="show('trades')">买卖点</button>
 </nav>
-<iframe id="frame-a" class="frame show" src="six-worth-chart.html"></iframe>
-<iframe id="frame-b" class="frame" src="drawdown-monitor.html"></iframe>
+<iframe id="frame-six-worth" class="frame show" src="six-worth-chart.html"></iframe>
+<iframe id="frame-drawdown" class="frame" src="drawdown-monitor.html"></iframe>
+<iframe id="frame-trades" class="frame" src="trades-dashboard.html"></iframe>
 <script>
-function show(which){
-  document.getElementById('frame-a').classList.toggle('show', which==='a');
-  document.getElementById('frame-b').classList.toggle('show', which==='b');
-  document.getElementById('tab-a').classList.toggle('active', which==='a');
-  document.getElementById('tab-b').classList.toggle('active', which==='b');
-  location.hash = which==='a' ? 'chart' : 'drawdown';
-  try{ localStorage.setItem('activeTab', which) }catch(e){}
+var PAGES = [{"key":"six-worth","name":"六值指数"},{"key":"drawdown","name":"历史最大回撤"},{"key":"trades","name":"买卖点"}];
+function show(k){
+  PAGES.forEach(function(p){
+    document.getElementById('frame-' + p.key).classList.toggle('show', p.key === k);
+    document.getElementById('tab-' + p.key).classList.toggle('active', p.key === k);
+  });
+  location.hash = k;
+  try{ localStorage.setItem('activeTab', k) }catch(e){}
 }
-var h = location.hash;
-show(h.indexOf('drawdown')>=0 ? 'b' :
-     (h.indexOf('chart')>=0 ? 'a' :
-      (localStorage.getItem('activeTab') || 'a')));
+var h = location.hash.replace('#', '');
+var saved = localStorage.getItem('activeTab');
+var keys = PAGES.map(function(p){ return p.key; });
+show(keys.indexOf(h) >= 0 ? h : (keys.indexOf(saved) >= 0 ? saved : keys[0]));
 </script></body></html>
