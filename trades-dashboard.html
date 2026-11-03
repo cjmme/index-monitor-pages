@@ -87,9 +87,10 @@ function render(id){
       itemStyle:{color: m.pos === 'top' ? '#d73a49' : '#0969da'},
       label:{formatter:m.text, position:m.pos, color:'#24292f',
              fontSize:11, fontWeight:'bold'}});
-    if (m.dd){                // 历史轮：最低点左边加蓝色回撤幅度框
+    if (m.dd){                // 历史轮：蓝框挪到最低点文字的左边、与文字同一行
+      // 圆点 label 在 bottom(text 中心约 +15px)，蓝框下移对齐该行并再往左让开文字宽度
       marks.push({coord:[m.date, m.value], symbol:'rect',
-        symbolSize:[52,20], symbolOffset:[-40,0],
+        symbolSize:[52,20], symbolOffset:[-76,15],
         itemStyle:{color:'#0969da'},
         label:{formatter:m.dd, position:'inside', color:'#fff',
                fontSize:11, fontWeight:'bold'}});
