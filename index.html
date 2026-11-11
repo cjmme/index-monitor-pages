@@ -20,9 +20,9 @@ nav button.active{background:#1f6feb;color:#fff;border-color:#1f6feb}
   <button id="tab-drawdown" onclick="show('drawdown')">历史最大回撤</button>
   <button id="tab-trades" onclick="show('trades')">买卖点</button>
 </nav>
-<iframe id="frame-six-worth" class="frame show" src="six-worth-chart.html"></iframe>
-<iframe id="frame-drawdown" class="frame" src="drawdown-monitor.html"></iframe>
-<iframe id="frame-trades" class="frame" src="trades-dashboard.html"></iframe>
+<iframe id="frame-six-worth" class="frame show" src="six-worth-chart.html" allow="clipboard-write"></iframe>
+<iframe id="frame-drawdown" class="frame" src="drawdown-monitor.html" allow="clipboard-write"></iframe>
+<iframe id="frame-trades" class="frame" src="trades-dashboard.html" allow="clipboard-write"></iframe>
 <script>
 var PAGES = [{"key":"six-worth","name":"六值指数"},{"key":"drawdown","name":"历史最大回撤"},{"key":"trades","name":"买卖点"}];
 function show(k){
