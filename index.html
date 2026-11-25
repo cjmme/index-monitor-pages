@@ -18,13 +18,15 @@ nav button.active{background:#1f6feb;color:#fff;border-color:#1f6feb}
   <span class="logo">📊 指数监控台</span>
   <button id="tab-six-worth" onclick="show('six-worth')">六值指数</button>
   <button id="tab-drawdown" onclick="show('drawdown')">历史最大回撤</button>
+  <button id="tab-rally" onclick="show('rally')">历史最大涨幅</button>
   <button id="tab-trades" onclick="show('trades')">买卖点</button>
 </nav>
-<iframe id="frame-six-worth" class="frame show" src="six-worth-chart.html" allow="clipboard-write"></iframe>
-<iframe id="frame-drawdown" class="frame" src="drawdown-monitor.html" allow="clipboard-write"></iframe>
-<iframe id="frame-trades" class="frame" src="trades-dashboard.html" allow="clipboard-write"></iframe>
+<iframe id="frame-six-worth" class="frame show" src="six-worth-chart.html"></iframe>
+<iframe id="frame-drawdown" class="frame" src="drawdown-monitor.html"></iframe>
+<iframe id="frame-rally" class="frame" src="rally-dashboard.html"></iframe>
+<iframe id="frame-trades" class="frame" src="trades-dashboard.html"></iframe>
 <script>
-var PAGES = [{"key":"six-worth","name":"六值指数"},{"key":"drawdown","name":"历史最大回撤"},{"key":"trades","name":"买卖点"}];
+var PAGES = [{"key":"six-worth","name":"六值指数"},{"key":"drawdown","name":"历史最大回撤"},{"key":"rally","name":"历史最大涨幅"},{"key":"trades","name":"买卖点"}];
 function show(k){
   PAGES.forEach(function(p){
     document.getElementById('frame-' + p.key).classList.toggle('show', p.key === k);
