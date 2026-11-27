@@ -21,14 +21,16 @@ nav button.active{background:#1f6feb;color:#fff;border-color:#1f6feb}
   <button id="tab-rally" onclick="show('rally')">历史最大涨幅</button>
   <button id="tab-trades" onclick="show('trades')">买卖点</button>
   <button id="tab-etf-share" onclick="show('etf-share')">ETF份额追踪</button>
+  <button id="tab-fed" onclick="show('fed')">美联储利率</button>
 </nav>
 <iframe id="frame-six-worth" class="frame show" src="six-worth-chart.html"></iframe>
 <iframe id="frame-drawdown" class="frame" src="drawdown-monitor.html"></iframe>
 <iframe id="frame-rally" class="frame" src="rally-dashboard.html"></iframe>
 <iframe id="frame-trades" class="frame" src="trades-dashboard.html"></iframe>
 <iframe id="frame-etf-share" class="frame" src="etf-share-dashboard.html"></iframe>
+<iframe id="frame-fed" class="frame" src="fed-dashboard.html"></iframe>
 <script>
-var PAGES = [{"key":"six-worth","name":"六值指数"},{"key":"drawdown","name":"历史最大回撤"},{"key":"rally","name":"历史最大涨幅"},{"key":"trades","name":"买卖点"},{"key":"etf-share","name":"ETF份额追踪"}];
+var PAGES = [{"key":"six-worth","name":"六值指数"},{"key":"drawdown","name":"历史最大回撤"},{"key":"rally","name":"历史最大涨幅"},{"key":"trades","name":"买卖点"},{"key":"etf-share","name":"ETF份额追踪"},{"key":"fed","name":"美联储利率"}];
 function show(k){
   PAGES.forEach(function(p){
     document.getElementById('frame-' + p.key).classList.toggle('show', p.key === k);
